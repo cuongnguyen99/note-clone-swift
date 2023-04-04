@@ -10,4 +10,5 @@ enum Identifier: String {
     case NoteListCell = "NoteListCell"
     case DetailNoteController = "DetailNoteController"
     case AddNoteController = "AddNoteController"
+    case NoteImage = "NoteImage"
 }

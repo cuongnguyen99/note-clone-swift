@@ -49,6 +49,9 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title here" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHH-QF-UUc">
                                 <rect key="frame" x="10" y="58" width="394" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="JC8-hE-gxB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -58,8 +61,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q75-ZP-H8P">
+                                <rect key="frame" x="10" y="104" width="394" height="128"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" ambiguous="YES" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TYe-FP-BXY">
+                                        <rect key="frame" x="0.0" y="18" width="394" height="110"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="F79-hi-KBR"/>
+                                    <constraint firstAttribute="bottom" secondItem="TYe-FP-BXY" secondAttribute="bottom" id="HzB-cm-4J3"/>
+                                    <constraint firstItem="TYe-FP-BXY" firstAttribute="top" secondItem="2Rr-9y-7I4" secondAttribute="top" id="bUi-WX-K9j"/>
+                                    <constraint firstItem="TYe-FP-BXY" firstAttribute="leading" secondItem="2Rr-9y-7I4" secondAttribute="leading" id="oEQ-Np-WUS"/>
+                                    <constraint firstItem="2Rr-9y-7I4" firstAttribute="trailing" secondItem="TYe-FP-BXY" secondAttribute="trailing" id="xjo-Hq-mOF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="C5u-Fj-GvE"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="2Rr-9y-7I4"/>
+                            </scrollView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yen-NL-56I">
-                                <rect key="frame" x="10" y="113" width="394" height="759"/>
+                                <rect key="frame" x="10" y="216" width="394" height="656"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="746" id="0Fo-bk-uBo"/>
@@ -80,21 +101,28 @@
                         <constraints>
                             <constraint firstItem="nHH-QF-UUc" firstAttribute="top" secondItem="HWq-cg-0R5" secondAttribute="top" constant="10" id="9N1-is-nE3"/>
                             <constraint firstItem="Yen-NL-56I" firstAttribute="leading" secondItem="HWq-cg-0R5" secondAttribute="leading" constant="10" id="A8p-bI-JXx"/>
-                            <constraint firstItem="Yen-NL-56I" firstAttribute="top" secondItem="HWq-cg-0R5" secondAttribute="top" constant="65" id="Gon-na-fzk"/>
+                            <constraint firstItem="HWq-cg-0R5" firstAttribute="trailing" secondItem="Q75-ZP-H8P" secondAttribute="trailing" constant="10" id="EkQ-hX-aMv"/>
                             <constraint firstItem="nHH-QF-UUc" firstAttribute="leading" secondItem="HWq-cg-0R5" secondAttribute="leading" constant="10" id="H4I-Ny-tIz"/>
+                            <constraint firstItem="Q75-ZP-H8P" firstAttribute="leading" secondItem="HWq-cg-0R5" secondAttribute="leading" constant="10" id="Uz8-TQ-2YH"/>
                             <constraint firstItem="HWq-cg-0R5" firstAttribute="trailing" secondItem="Yen-NL-56I" secondAttribute="trailing" constant="10" id="Wcs-dN-5CF"/>
                             <constraint firstItem="HWq-cg-0R5" firstAttribute="trailing" secondItem="nHH-QF-UUc" secondAttribute="trailing" constant="10" id="ZHF-SG-nyG"/>
+                            <constraint firstItem="Q75-ZP-H8P" firstAttribute="top" secondItem="nHH-QF-UUc" secondAttribute="bottom" constant="10" id="dsv-6Y-ggN"/>
+                            <constraint firstItem="Yen-NL-56I" firstAttribute="top" secondItem="Q75-ZP-H8P" secondAttribute="bottom" constant="10" id="j0b-vi-pgZ"/>
                             <constraint firstItem="Yen-NL-56I" firstAttribute="bottom" secondItem="HWq-cg-0R5" secondAttribute="bottom" constant="10" id="xYh-pG-b3w"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageContainer" destination="Q75-ZP-H8P" id="SVa-0E-qPd"/>
+                        <outlet property="imageContainerHeight" destination="F79-hi-KBR" id="lqS-6e-5Ke"/>
+                        <outlet property="imageStack" destination="TYe-FP-BXY" id="UJS-ae-hCx"/>
                         <outlet property="tfTitle" destination="nHH-QF-UUc" id="pAM-sL-gg3"/>
                         <outlet property="tvContent" destination="Yen-NL-56I" id="acE-SC-PTh"/>
+                        <outlet property="tvTopConstraint" destination="j0b-vi-pgZ" id="GKz-3y-Htv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guM-53-B9Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="-909"/>
+            <point key="canvasLocation" x="692.75362318840587" y="-909.375"/>
         </scene>
         <!--Add Note Controller-->
         <scene sceneID="MdW-HZ-Oj5">
@@ -105,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter note's title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Al-OS-Tr3">
-                                <rect key="frame" x="10" y="58" width="394" height="37.5"/>
+                                <rect key="frame" x="10" y="58" width="394" height="38"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -116,7 +144,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZCZ-UT-Qnh">
-                                <rect key="frame" x="10" y="108" width="394" height="744"/>
+                                <rect key="frame" x="10" y="216" width="394" height="636"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
@@ -128,23 +156,48 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-4D-2ij">
+                                <rect key="frame" x="10" y="104" width="394" height="105"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="l5X-Kf-LZa">
+                                        <rect key="frame" x="0.0" y="-3" width="394" height="110"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="l5X-Kf-LZa" firstAttribute="leading" secondItem="S7s-t6-n78" secondAttribute="leading" id="OSF-Do-UEo"/>
+                                    <constraint firstItem="l5X-Kf-LZa" firstAttribute="top" secondItem="4JK-4D-2ij" secondAttribute="top" id="a4k-A2-76Q"/>
+                                    <constraint firstAttribute="height" constant="100" id="bdK-Ea-FTR"/>
+                                    <constraint firstItem="S7s-t6-n78" firstAttribute="trailing" secondItem="l5X-Kf-LZa" secondAttribute="trailing" id="cPY-2n-jy1"/>
+                                    <constraint firstAttribute="bottom" secondItem="l5X-Kf-LZa" secondAttribute="bottom" id="dR7-TO-wEK"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="4bt-IW-1QT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="S7s-t6-n78"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m7G-lr-eUV"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <color key="tintColor" systemColor="tintColor"/>
                         <constraints>
+                            <constraint firstItem="ZCZ-UT-Qnh" firstAttribute="top" secondItem="4JK-4D-2ij" secondAttribute="bottom" constant="10" id="0gy-yJ-eG0"/>
                             <constraint firstItem="m7G-lr-eUV" firstAttribute="bottom" secondItem="ZCZ-UT-Qnh" secondAttribute="bottom" constant="10" id="0vG-n4-fIF"/>
+                            <constraint firstItem="4JK-4D-2ij" firstAttribute="leading" secondItem="m7G-lr-eUV" secondAttribute="leading" constant="10" id="2wz-Hb-HxW"/>
                             <constraint firstItem="0Al-OS-Tr3" firstAttribute="leading" secondItem="m7G-lr-eUV" secondAttribute="leading" constant="10" id="Ppm-Fp-KwZ"/>
                             <constraint firstItem="m7G-lr-eUV" firstAttribute="trailing" secondItem="ZCZ-UT-Qnh" secondAttribute="trailing" constant="10" id="ciY-AX-2DD"/>
+                            <constraint firstItem="m7G-lr-eUV" firstAttribute="trailing" secondItem="4JK-4D-2ij" secondAttribute="trailing" constant="10" id="jDP-Cb-DKg"/>
+                            <constraint firstItem="4JK-4D-2ij" firstAttribute="top" secondItem="0Al-OS-Tr3" secondAttribute="bottom" constant="10" id="k99-nB-mZv"/>
                             <constraint firstItem="m7G-lr-eUV" firstAttribute="trailing" secondItem="0Al-OS-Tr3" secondAttribute="trailing" constant="10" id="nd1-mj-lfG"/>
-                            <constraint firstItem="ZCZ-UT-Qnh" firstAttribute="top" secondItem="m7G-lr-eUV" secondAttribute="top" constant="60" id="srI-QX-Cmc"/>
                             <constraint firstItem="ZCZ-UT-Qnh" firstAttribute="leading" secondItem="m7G-lr-eUV" secondAttribute="leading" constant="10" id="xtQ-Vk-VVC"/>
                             <constraint firstItem="0Al-OS-Tr3" firstAttribute="top" secondItem="m7G-lr-eUV" secondAttribute="top" constant="10" id="zVG-5t-Cg2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageContainer" destination="4JK-4D-2ij" id="a0d-wj-Xmb"/>
+                        <outlet property="imageContainerHeight" destination="bdK-Ea-FTR" id="Q7i-Yl-gCh"/>
+                        <outlet property="imageStack" destination="l5X-Kf-LZa" id="dHR-gH-NBW"/>
                         <outlet property="tfTitle" destination="0Al-OS-Tr3" id="kAj-bz-shB"/>
                         <outlet property="tvContent" destination="ZCZ-UT-Qnh" id="r0e-bM-jtA"/>
+                        <outlet property="tvTopConstraint" destination="0gy-yJ-eG0" id="2Ou-g1-KNm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KT-Fy-xJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

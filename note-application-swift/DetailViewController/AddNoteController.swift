@@ -14,14 +14,16 @@ class AddNoteController: UIViewController, PHPickerViewControllerDelegate {
     
     @IBOutlet var tfTitle: UITextField!
     @IBOutlet var tvContent : UITextView!
+    @IBOutlet weak var imageStack: UIStackView!
+    @IBOutlet weak var imageContainer: UIScrollView!
+    @IBOutlet weak var imageContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var tvTopConstraint: NSLayoutConstraint!
     
-    private var images = [UIImage]()
-    private var imagesLocation = [Int]()
+    private var images = List<String>()
     private var timeRemind: Date!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(
                 image: UIImage(systemName: "checkmark"),
@@ -42,6 +44,8 @@ class AddNoteController: UIViewController, PHPickerViewControllerDelegate {
         tfTitle.layer.borderColor = UIColor.darkGray.cgColor
         tvContent.layer.borderWidth = 1
         tvContent.layer.borderColor = UIColor.darkGray.cgColor
+        imageContainerHeight.constant = 0
+        tvTopConstraint.constant = 0
     }
     
     @objc func saveNote() {
@@ -51,11 +55,15 @@ class AddNoteController: UIViewController, PHPickerViewControllerDelegate {
             return
         }
         
-        print(tvContent.text!)
-        let data = Note(id: UUID().uuidString, title: title, dateReminder: timeRemind, content: content as NSString)
+        var data = Note(id: UUID().uuidString, title: title, dateReminder: timeRemind, content: content as NSString)
+        
+        if (!images.isEmpty) {
+            for item in images {
+                data.addImageToNote(imageName: item)
+            }
+        }
         
         print("Images: ", data.images)
-        print("Locations: ", data.imagesLocation)
         try! realm.write{
             realm.add(data)
         }
@@ -80,26 +88,20 @@ class AddNoteController: UIViewController, PHPickerViewControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
         results.forEach { result in
             result.itemProvider.loadObject(ofClass: UIImage.self) { object, error in
-                if let image = object as? UIImage, error == nil {
-                    self.images.append(image)
-                    self.imagesLocation.append(self.tvContent.selectedRange.location)
-                    DispatchQueue.main.async {
-                        let attachImage = self.images[self.images.count - 1]
-                        let attachImageLocation = self.tvContent.selectedRange.location
-                        
-//                        Caculate new size
-                        let newImageWidth = (self.tvContent.bounds.size.width)
-                        let scale = newImageWidth/image.size.width
-                        let newImageHight = image.size.height*scale
-                        
-                        let attachment = NSTextAttachment()
-                        attachment.bounds = CGRect.init(x: 0, y: 0, width: newImageWidth, height: newImageHight)
-                        attachment.image = attachImage
-                        
-                        let attachString = NSAttributedString(attachment: attachment)
-                        self.tvContent.textStorage.insert(
-                            attachString,
-                            at: self.tvContent.selectedRange.location)
+                guard let fileName = result.itemProvider.suggestedName else {return}
+                result.itemProvider.loadFileRepresentation(forTypeIdentifier: "public.item") { (url, error) in
+                    if let url = url {
+                        let imageUrl = url.absoluteURL
+                        print("URL: ", imageUrl)
+                        DispatchQueue.main.async { [self] in
+                            images.append(fileName)
+                            let noteImage = NoteImage(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                            noteImage.configure(imagePath: fileName)
+                            noteImage.translatesAutoresizingMaskIntoConstraints = false
+                            imageStack.addArrangedSubview(noteImage)
+                            self.imageContainerHeight.constant = 100
+                            self.tvTopConstraint.constant = 10
+                        }
                     }
                 }
             }

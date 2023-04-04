@@ -53,24 +53,9 @@ class NoteListViewController: UITableViewController {
     
     private func configureNavigationBar() {
         navigationItem.title = NSLocalizedString("Note", comment: "Note view controller title")
-        /*navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: nil
-        )
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .yellow
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        title = "Note List"*/
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*if let vc = storyboard?.instantiateViewController(identifier: Identifier.DetailNoteController.rawValue) as? DetailNoteController{
-//            vc.noteTitle = Note.notesSample[indexPath.row].title
-//            vc.noteContent = Note.notesSample[indexPath.row].content
-            vc.note = Note.notesSample[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
-        }*/
         let vc = storyboard?.instantiateViewController(identifier: Identifier.DetailNoteController.rawValue) as! DetailNoteController
         vc.note = noteList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
@@ -88,9 +73,6 @@ class NoteListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteListCell", for: indexPath) as! NoteListCell
         let item = noteList[indexPath.row]
         cell.configure(title: item.title, content: item.content as String)
-        /*if (indexPath.row == 0) {
-            NSLayoutConstraint(item: cell, attribute: .top, relatedBy: .equal, toItem: tableView, attribute: .top, multiplier: 1, constant: 10).isActive = true
-        }*/
         
         return cell
     }
@@ -107,7 +89,6 @@ class NoteListViewController: UITableViewController {
                 realm.delete(item)
             })
         }
-    
         noteList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.reloadData()

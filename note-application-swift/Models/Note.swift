@@ -11,9 +11,7 @@ class Note: Object {
     @objc dynamic var title: String!
     @objc public var dateReminder: Date!
     @objc dynamic var content: NSString!
-    let imagesLocation = List<Int>()
-    let images = List<Image>()
-    
+    let images = List<String>()
     
 //    convenience init(title: String!, dateCreate: Date!, dateReminder: Date!, content: String!) {
 //        self.init()
@@ -31,8 +29,11 @@ class Note: Object {
         self.content = content
     }
     
-    func addImageToNote(image: UIImage!, location: Int!) {
-        
-        
+    func addImageToNote(imageName: String) {
+        self.images.append(imageName)
+    }
+    
+    func saveNewImages(imageList: List<String>) {
+        self.images.append(objectsIn: images)
     }
 }

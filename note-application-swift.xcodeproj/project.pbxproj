@@ -23,6 +23,9 @@
 		C38621B529924DA40067BE6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38621B329924DA40067BE6A /* Main.storyboard */; };
 		C38621B729924DA50067BE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C38621B629924DA50067BE6A /* Assets.xcassets */; };
 		C38621BA29924DA50067BE6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C38621B829924DA50067BE6A /* LaunchScreen.storyboard */; };
+		C3D4073C29DAAEC7000EE8CE /* NoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4073B29DAAEC7000EE8CE /* NoteImage.swift */; };
+		C3D4073E29DAAF0B000EE8CE /* NoteImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D4073D29DAAF0B000EE8CE /* NoteImage.xib */; };
+		C3D4074029DAB187000EE8CE /* main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C3D4073F29DAB187000EE8CE /* main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg */; };
 		D152C4B06349E62D5F2F5FDA /* Pods_note_application_swift_note_application_swiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BD3519069DA8024DBA13E1 /* Pods_note_application_swift_note_application_swiftUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		C38621BB29924DA50067BE6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C38621C029924DA50067BE6A /* note-application-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "note-application-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38621CA29924DA50067BE6A /* note-application-swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "note-application-swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D4073B29DAAEC7000EE8CE /* NoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteImage.swift; sourceTree = "<group>"; };
+		C3D4073D29DAAF0B000EE8CE /* NoteImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteImage.xib; sourceTree = "<group>"; };
+		C3D4073F29DAB187000EE8CE /* main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg"; path = "../../../../Downloads/main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg"; sourceTree = "<group>"; };
 		D9BE0CBA3345CD6F066245DA /* Pods-note-application-swift-note-application-swiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-note-application-swift-note-application-swiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-note-application-swift-note-application-swiftUITests/Pods-note-application-swift-note-application-swiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF6226EDEF4538E5F2E3D802 /* Pods-note-application-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-note-application-swift.debug.xcconfig"; path = "Target Support Files/Pods-note-application-swift/Pods-note-application-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +161,8 @@
 			children = (
 				C30819042994E2F700482E70 /* NoteListCell.swift */,
 				C30819052994E2F700482E70 /* NoteListCell.xib */,
+				C3D4073B29DAAEC7000EE8CE /* NoteImage.swift */,
+				C3D4073D29DAAF0B000EE8CE /* NoteImage.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 				C38621AF29924DA40067BE6A /* SceneDelegate.swift */,
 				C38621B329924DA40067BE6A /* Main.storyboard */,
 				C38621B629924DA50067BE6A /* Assets.xcassets */,
+				C3D4073F29DAB187000EE8CE /* main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg */,
 				C38621B829924DA50067BE6A /* LaunchScreen.storyboard */,
 				C38621BB29924DA50067BE6A /* Info.plist */,
 			);
@@ -318,7 +327,9 @@
 				C38621BA29924DA50067BE6A /* LaunchScreen.storyboard in Resources */,
 				C38621B729924DA50067BE6A /* Assets.xcassets in Resources */,
 				C38621B529924DA40067BE6A /* Main.storyboard in Resources */,
+				C3D4073E29DAAF0B000EE8CE /* NoteImage.xib in Resources */,
 				C30819072994E2F700482E70 /* NoteListCell.xib in Resources */,
+				C3D4074029DAB187000EE8CE /* main-qimg-cc9225318a29508f867a08a522e95277-lq.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +465,7 @@
 				C38621AE29924DA40067BE6A /* AppDelegate.swift in Sources */,
 				C308190B2995EFE700482E70 /* Date+Today.swift in Sources */,
 				C38621B029924DA40067BE6A /* SceneDelegate.swift in Sources */,
+				C3D4073C29DAAEC7000EE8CE /* NoteImage.swift in Sources */,
 				C30818FE29948FD200482E70 /* Note.swift in Sources */,
 				C342210D29A360A500287C4E /* Image.swift in Sources */,
 			);
